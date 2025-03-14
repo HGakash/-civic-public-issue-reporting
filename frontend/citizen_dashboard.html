@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-5">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow-md">
+        <h2 class="text-2xl font-bold text-center mb-4">Report an Issue</h2>
+        <form id="issueForm" enctype="multipart/form-data">
+            <input type="text" id="title" placeholder="Issue Title" class="w-full p-2 mb-3 border rounded" required>
+            <textarea id="description" placeholder="Description" class="w-full p-2 mb-3 border rounded" required></textarea>
+            <input type="text" id="location" placeholder="Location" class="w-full p-2 mb-3 border rounded" required>
+            <button type="button" id="getLocation" class="w-full bg-blue-500 text-white p-2 rounded mt-2">
+               Use My Location
+           </button>
+            <p id="locationStatus" class="text-sm text-gray-500 mt-1"></p>
+
+            <select id="department" class="w-full p-2 mb-3 border rounded" required>
+                <option value="">Select Department</option>
+                <option value="MCC">MCC</option>
+                <option value="CESC">CESC</option>
+                <option value="PWD">PWD</option>
+            </select>
+
+            <input type="file" id="image" class="w-full p-2 mb-3 border rounded" accept="image/*" required>
+
+            <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Submit Issue</button>
+        </form>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white p-6 mt-5 rounded shadow-md">
+        <h2 class="text-2xl font-bold text-center mb-4">Reported Issues</h2>
+        <ul id="issuesList" class="space-y-4"></ul>
+    </div>
+
+    <script src="/frontend/js/citizen-dashboard.js"></script>
+</body>
+</html>

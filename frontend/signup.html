@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h2 class="text-2xl font-bold mb-4 text-center">Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name" class="w-full p-2 mb-3 border rounded" required>
+            <input type="email" id="email" placeholder="Email" class="w-full p-2 mb-3 border rounded" required>
+            <input type="password" id="password" placeholder="Password" class="w-full p-2 mb-3 border rounded" required>
+            <p id="passwordError" class="text-red-500 text-sm mt-1 hidden">Password must be at least 4 characters</p>
+            <select id="role" class="w-full p-2 mb-3 border rounded">
+                <option value="Citizen">Citizen</option>
+                <option value="Department Official">Department Official</option>
+            </select>
+
+            <!-- Department Dropdown (Initially Hidden) -->
+            <select id="department" class="w-full p-2 mb-3 border rounded hidden">
+                <option value="">Select Department</option>
+                <option value="MCC">MCC</option>
+                <option value="CESC">CESC</option>
+                <option value="PWD">PWD</option>
+            </select>
+
+            <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Sign Up</button>
+        </form>
+        <p class="text-center mt-4">Already have an account? <a href="login.html" class="text-blue-500">Login</a></p>
+    </div>
+
+    <script>
+        document.getElementById("role").addEventListener("change", function () {
+            const departmentDropdown = document.getElementById("department");
+            if (this.value === "Department Official") {
+                departmentDropdown.classList.remove("hidden");
+                departmentDropdown.setAttribute("required", "true");
+            } else {
+                departmentDropdown.classList.add("hidden");
+                departmentDropdown.removeAttribute("required");
+            }
+        });
+
+
+        const passwordInput = document.getElementById("password");
+        const passwordError = document.getElementById("passwordError");
+        
+        passwordInput.addEventListener("input", validatePassword);
+        passwordInput.addEventListener("blur", validatePassword);
+        
+        function validatePassword() {
+            if (passwordInput.value.length > 0 && passwordInput.value.length < 4) {
+                passwordError.classList.remove("hidden");
+                passwordInput.classList.add("border-red-500");
+                return false;
+            } else {
+                passwordError.classList.add("hidden");
+                passwordInput.classList.remove("border-red-500");
+                return true;
+            }
+        }
+    </script>
+    <script src="/frontend/js/auth.js"></script>
+</body>
+</html>

@@ -51,7 +51,7 @@ async function loadIssues() {
                 <p><strong>Location:</strong> ${issue.location}</p>
                 <p><strong>Department:</strong> ${issue.department}</p>
                 <p><strong>Status:</strong> <span class="text-${issue.status === 'Completed' ? 'green' : 'red'}-500">${issue.status}</span></p>
-                ${issue.image ? `<img src="http://localhost:8002/uploads/${issue.image}" class="w-32 mt-2 rounded">` : ""}
+                ${issue.image ? `<img src="http://localhost:8002${issue.image}" class="w-32 mt-2 rounded">` : ""}
             `;
 
             issuesList.appendChild(issueItem);

@@ -14,9 +14,16 @@ const issueSchema = new mongoose.Schema(
             type: String, 
             required: true 
         },
-        image: { 
+        coordinates: { 
             type: String 
-        }, // Image URL
+        },
+        image: { 
+            type: String, 
+            required: true 
+        }, // Citizen-uploaded image
+        completion_image: { 
+            type: String 
+        }, // Image uploaded by the department after completion
         department: {
             type: String,
             required: true,
@@ -27,10 +34,15 @@ const issueSchema = new mongoose.Schema(
             enum: ['Pending', 'In Progress', 'Resolved'],
             default: 'Pending',
         },
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+        user: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User', 
+            required: true 
+        },
     },
-    { timestamps: true }
+    { timestamps: true } // This will automatically add createdAt and updatedAt fields
 );
 
 const Issue = mongoose.model('Issue', issueSchema);
+
 export default Issue;

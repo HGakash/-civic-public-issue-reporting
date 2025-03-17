@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>This is department Dashboard</h1>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Department Dashboard</h1>
+        <h2  id="dept-name" class="text-3xl font-bold text-center mb-6"></h2>
+
+        <!-- Issues List -->
+        <div id="issues-container" class="space-y-4">
+            <!-- Issues will be loaded here dynamically -->
+        </div>
+    </div>
+
+    <!-- Modal for Updating Issue -->
+    <div id="update-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <h2 class="text-xl font-bold mb-4">Update Issue</h2>
+
+            <input type="hidden" id="issue-id">
+            
+            <label class="block mb-2 font-medium">Status</label>
+            <select id="status" class="w-full p-2 border rounded mb-4">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+
+            <label class="block mb-2 font-medium">Completion Image (Optional)</label>
+            <input type="file" id="completion-image" class="w-full p-2 border rounded mb-4">
+
+            <div class="flex justify-between">
+                <button id="close-modal" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                <button id="update-issue" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+            </div>
+        </div>
+    </div>
+    <script defer src="/frontend/js/department-dashboard.js"></script>
 </body>
 </html>

@@ -48,6 +48,7 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
             // Store token & role in localStorage
             localStorage.setItem("token", data.token);
             localStorage.setItem("role", data.role);
+            localStorage.setItem("department",data.department)
 
             // Redirect user based on role
             if (data.role === "Citizen") {
